@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class EmployeeGrowth {
+public class EmployeeStats {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class EmployeeGrowth {
 	Integer year;
 	String project_name;
 
-	public EmployeeGrowth(Integer tracker_id, Integer emp_id, String emp_name, Integer project_part_progress,
+	public EmployeeStats(Integer tracker_id, Integer emp_id, String emp_name, Integer project_part_progress,
 			Integer month, Integer year, String project_name) {
 		this.tracker_id = tracker_id;
 		this.emp_id = emp_id;
@@ -85,7 +85,7 @@ public class EmployeeGrowth {
 		this.year = year;
 	}
 
-	public EmployeeGrowth() {
+	public EmployeeStats() {
 	}
 
 }

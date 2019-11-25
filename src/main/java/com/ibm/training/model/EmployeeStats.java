@@ -11,23 +11,46 @@ public class EmployeeStats {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer tracker_id;
-	Integer emp_id;
 	String emp_name;
 	Integer project_part_progress;
 	Integer month;
 	Integer year;
+	Integer total_task;
+	Integer completed_task;
 	String project_name;
 
-	public EmployeeStats(Integer tracker_id, Integer emp_id, String emp_name, Integer project_part_progress,
-			Integer month, Integer year, String project_name) {
+	public EmployeeStats(Integer tracker_id, String emp_name, Integer project_part_progress,
+			Integer month, Integer year,Integer total_task,Integer completed_task, String project_name) {
 		this.tracker_id = tracker_id;
-		this.emp_id = emp_id;
 		this.emp_name = emp_name;
 		this.project_part_progress = project_part_progress;
 		this.month = month;
 		this.year = year;
 		this.project_name = project_name;
+		this.completed_task=completed_task;
+		this.total_task=total_task;
 	}
+	
+
+	public Integer getTotal_task() {
+		return total_task;
+	}
+
+
+	public void setTotal_task(Integer total_task) {
+		this.total_task = total_task;
+	}
+
+
+	public Integer getCompleted_task() {
+		return completed_task;
+	}
+
+
+	public void setCompleted_task(Integer completed_task) {
+		this.completed_task = completed_task;
+	}
+
 
 	public String getProject_name() {
 		return project_name;
@@ -53,13 +76,6 @@ public class EmployeeStats {
 		this.tracker_id = tracker_id;
 	}
 
-	public Integer getEmp_id() {
-		return emp_id;
-	}
-
-	public void setEmp_id(Integer emp_id) {
-		this.emp_id = emp_id;
-	}
 
 	public Integer getProject_part_progress() {
 		return project_part_progress;

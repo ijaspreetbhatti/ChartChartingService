@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-import com.ibm.training.model.EmployeeDetails;
 import com.ibm.training.model.EmployeeStats;
 import com.ibm.training.model.ProjectDetails;
 import com.ibm.training.model.ProjectStats;
@@ -22,6 +22,10 @@ import com.ibm.training.service.MonthlyProjectStatsService;
 @CrossOrigin(origins = "http://localhost:*")
 @RestController
 public class ChartDataController {
+	
+	
+	@Autowired
+	RestTemplate restTemp;
 	
 	@Autowired
 	MonthlyEmployeeStatsService e_service;
@@ -70,6 +74,7 @@ public class ChartDataController {
 	@RequestMapping(method = RequestMethod.PUT, value="/project")
 	void updateTotalTask(@RequestBody Tasks task) {
 		p_service.updateTotalTask(task);
+		restTemp.postForObject("http://localhost:8086/chartChartingService/emp_stat", task, String.class);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/project/completetask")
